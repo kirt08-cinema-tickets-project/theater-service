@@ -1,7 +1,7 @@
 import grpc
 from kirt08_contracts.theater import theater_pb2_grpc, theater_pb2
 
-from src.application.usecases import GetTheaterUsecase, ListTheaterUsecase, CreateTheaterUsecase
+from src.application.usecases.theater import GetTheaterUsecase, ListTheaterUsecase, CreateTheaterUsecase
 
 from src.domain.exceptions import (
     TheaterNotFoundException,
