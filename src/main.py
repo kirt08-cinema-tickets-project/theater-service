@@ -5,7 +5,7 @@ from src.infrastructure.config import settings
 from src.infrastructure.db.theater_repository_sqlalchemy import SQLAlchemyTheaterRepository
 from src.infrastructure.db.database import db
 
-from src.application.usecases import(
+from src.application.usecases.theater import(
     CreateTheaterUsecase,
     GetTheaterUsecase,
     ListTheaterUsecase,
