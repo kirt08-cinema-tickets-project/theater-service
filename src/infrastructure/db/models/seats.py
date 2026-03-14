@@ -12,6 +12,8 @@ if TYPE_CHECKING:
 
 
 class SeatsORM(Base):
+    __tablename__ = "seats"
+    
     id: Mapped[UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
 
     row: Mapped[int]
@@ -24,5 +26,4 @@ class SeatsORM(Base):
     hall_id: Mapped[UUID] = mapped_column(ForeignKey("halls.id"))
     halls_rel: Mapped["HallsORM"] = relationship(
         back_populates="seats_rel",
-        cascade="all, delete-orphan"
     )

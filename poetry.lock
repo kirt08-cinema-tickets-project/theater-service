@@ -325,14 +325,14 @@ setuptools = ">=77.0.1"
 
 [[package]]
 name = "kirt08-contracts"
-version = "0.3.2"
+version = "0.4.0"
 description = ""
 optional = false
 python-versions = "<3.13,>=3.12"
 groups = ["main"]
 files = [
-    {file = "kirt08_contracts-0.3.2-py3-none-any.whl", hash = "sha256:ad9e86b481bc11ab13ca253943f09ab62c348530e23062aa2ae8d939e64cb63b"},
-    {file = "kirt08_contracts-0.3.2.tar.gz", hash = "sha256:1b3f6c35d77d75eb2db1a5b4390b406b43a3aa206f89f19e3fac79e81754425c"},
+    {file = "kirt08_contracts-0.4.0-py3-none-any.whl", hash = "sha256:f7ea937616fbb667d6d739341771ab6314df447a414f80907c06ddf9f7457b61"},
+    {file = "kirt08_contracts-0.4.0.tar.gz", hash = "sha256:41acc639f86222bf6c7ece2c92902c26cc46f23c8e119d6920ff244bacf65955"},
 ]
 
 [package.dependencies]
@@ -828,4 +828,4 @@ typing-extensions = ">=4.12.0"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12, <3.13"
-content-hash = "179b1245ba9560de6518f4a64a554f7ec878478695d748abfc5f7f989add8bab"
+content-hash = "6c560132186c88122f6c93e2f44c4b3262e9bcbf0d4c1d0fd2eb81e3d5c1f5fe"
