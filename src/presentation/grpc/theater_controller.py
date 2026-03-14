@@ -36,13 +36,14 @@ class TheaterGrpcController(theater_pb2_grpc.TheaterServiceServicer):
             entity = await self._get_usecase.execute(
                 id = request.id
             )
-            return theater_pb2.GetTheaterResponse(
-                theater=to_proto(entity)
-            )
         except TheaterNotFoundException as e:
             await context.abort(grpc.StatusCode.NOT_FOUND, str(e))
         except TheaterNotUniqueException as e:
             await context.abort(grpc.StatusCode.FAILED_PRECONDITION, str(e))
+            
+        return theater_pb2.GetTheaterResponse(
+                theater=to_proto(entity)
+            )
     
     async def ListTheaters(self, request, context):
         entities = await self._list_usecase.execute()

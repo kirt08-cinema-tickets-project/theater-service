@@ -1,7 +1,7 @@
 import uuid
 from typing import TYPE_CHECKING
 
-from sqlalchemy import Integer, String, ForeignKey
+from sqlalchemy import String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.dialects.postgresql import UUID
 
@@ -24,5 +24,6 @@ class HallsORM(Base):
     )
     
     seats_rel: Mapped[list["SeatsORM"]] = relationship(
-        back_populates="halls_rel"
+        back_populates="halls_rel",
+        cascade="all, delete-orphan"
     )

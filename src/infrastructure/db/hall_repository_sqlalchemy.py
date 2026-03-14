@@ -29,7 +29,7 @@ class SQLAlchemyHallRepository(HallRepository):
         self,
         name,
         theater_id,
-        layout: list[RawLayout]
+        layouts: list[RawLayout]
     ):
         async with self._session_factory() as session:
             hall = HallsORM(
@@ -40,9 +40,9 @@ class SQLAlchemyHallRepository(HallRepository):
             await session.commit()
             await session.refresh(hall)
             return HallEntity(
-                id = hall.id,
+                id = str(hall.id),
                 name = hall.name,
-                theater_id = hall.theater_id,
+                theater_id = str(hall.theater_id),
                 created_at = hall.created_at,
                 updated_at = hall.updated_at 
             )
@@ -59,9 +59,9 @@ class SQLAlchemyHallRepository(HallRepository):
             except MultipleResultsFound:
                 raise HallNotUniqueException(f"Multiple halls with id {id}")
             return HallEntity(
-                id = hall_orm.id,
+                id = str(hall_orm.id),
                 name = hall_orm.name,
-                theater_id = hall_orm.theater_id,
+                theater_id = str(hall_orm.theater_id),
                 created_at = hall_orm.created_at,
                 updated_at = hall_orm.updated_at 
             )
@@ -75,18 +75,18 @@ class SQLAlchemyHallRepository(HallRepository):
             )).scalars().all()
             data_dto = [
                 HallEntity(
-                    id = hall.id,
+                    id = str(hall.id),
                     name = hall.name,
-                    theater_id = hall.theater_id,
+                    theater_id = str(hall.theater_id),
                     created_at = hall.created_at,
                     updated_at = hall.updated_at 
                 ) for hall in data_orm
             ]
             return data_dto
 
-    async def create_seats(self, hall_id: str, layout: list[RawLayout]):
+    async def create_seats(self, hall_id: str, layouts: list[RawLayout]):
         seats = []
-        for rowConfig in layout:
+        for rowConfig in layouts:
             for num in range(1, rowConfig.columns):
                 seats.append(
                     SeatsORM(

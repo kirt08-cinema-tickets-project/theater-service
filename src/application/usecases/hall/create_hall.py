@@ -19,10 +19,17 @@ class CreateHallUsecase:
             self,
             name,
             theater_id,
-            layout: list[RawLayout]
+            layouts: list[RawLayout]
     ):
-        return (await self._repo.create(
+        hall = await self._repo.create(
             name = name,
             theater_id = theater_id,
-            layout = layout 
-        ))
+            layouts = layouts
+        )
+
+        await self._repo.create_seats(
+            hall_id = hall.id,
+            layouts = layouts
+        )
+
+        return hall

@@ -17,7 +17,7 @@ class HallRepository(Protocol):
             self,
             name,
             theater_id,
-            layout: list[RawLayout]
+            layouts: list[RawLayout]
     ) -> HallEntity:
         ...
 
@@ -27,5 +27,5 @@ class HallRepository(Protocol):
     async def list_by_theater(self, theater_id: str) -> list[HallEntity]:
         ...
     
-    async def create_seats(self, hall_id: str, layout: list[RawLayout]) -> None:
+    async def create_seats(self, hall_id: str, layouts: list[RawLayout]) -> None:
         ...
