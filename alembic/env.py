@@ -23,6 +23,8 @@ if config.config_file_name is not None:
 # target_metadata = None
 
 from src.infrastructure.db.models.base_model import Base
+import src.infrastructure.db.models
+
 target_metadata = Base.metadata
 
 from src.infrastructure.config import settings
