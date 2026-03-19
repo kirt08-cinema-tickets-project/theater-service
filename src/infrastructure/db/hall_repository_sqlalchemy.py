@@ -87,7 +87,7 @@ class SQLAlchemyHallRepository(HallRepository):
     async def create_seats(self, hall_id: str, layouts: list[RawLayout]):
         seats = []
         for rowConfig in layouts:
-            for num in range(1, rowConfig.columns):
+            for num in range(1, rowConfig.columns + 1):
                 seats.append(
                     SeatsORM(
                         row = rowConfig.row,
